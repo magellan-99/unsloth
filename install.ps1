@@ -846,7 +846,7 @@ shell.Run cmd, 0, False
             substep "skipping PyTorch (--no-torch flag set)." "Yellow"
         } else {
             substep "installing PyTorch ($TorchIndexUrl)..."
-            $torchInstallExit = Invoke-InstallCommand { uv pip install --python $VenvPython "torch>=2.4,<2.11.0" torchvision torchaudio --index-url $TorchIndexUrl }
+            $torchInstallExit = Invoke-InstallCommand { uv pip install --python $VenvPython "torch>=2.4,<2.11.0" torchvision torchaudio --index-url $TorchIndexUrl --extra-index-url https://pypi.tuna.tsinghua.edu.cn/simple }
             if ($torchInstallExit -ne 0) {
                 Write-Host "[ERROR] Failed to install PyTorch (exit code $torchInstallExit)" -ForegroundColor Red
                 return
